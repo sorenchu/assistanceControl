@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Control de Asistencia - CR3C</string>
+    <string name="team_category">Introduce tu categoría</string>
+    <string name="save">Guardar</string>
+</resources>
