@@ -17,4 +17,12 @@ public class Player {
         this.surname = surname;
         this.category = category;
     }
+
+    public String getNameAndSurname() {
+        return String.format("%s %s", this.name, this.surname);
+    }
+
+    public String getSurnameAndName() {
+        return String.format("%s, %s", this.surname, this.name);
+    }
 }

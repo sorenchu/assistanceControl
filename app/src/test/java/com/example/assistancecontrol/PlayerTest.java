@@ -11,19 +11,33 @@ import model.Player;
 import static org.junit.Assert.*;
 
 public class PlayerTest {
-    Player player;
-
-    public void setUp() {
-        this.player = new Player("John", "Doe", Category.U12);
-    }
 
     @Test
     public void addPlayerToList() {
+        Player player = new Player();
         List<Player> playerList = new ArrayList<>();
         playerList.add(player);
         assertFalse(playerList.isEmpty());
-        assertEquals(playerList.size(), 1);
+        assertEquals(1, playerList.size());
         assertTrue(playerList.contains(player));
+    }
+
+    @Test
+    public void getNameAndSurname() {
+        Player player = new Player("John", "Doe", Category.U12);
+        assertEquals(
+                "John Doe",
+                player.getNameAndSurname()
+        );
+    }
+
+    @Test
+    public void getSurnameAndName() {
+        Player player = new Player("John", "Doe", Category.U12);
+        assertEquals(
+                "Doe, John",
+                player.getSurnameAndName()
+        );
     }
 
 }
