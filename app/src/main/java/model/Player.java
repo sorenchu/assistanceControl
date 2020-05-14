@@ -25,4 +25,9 @@ public class Player {
     public String getSurnameAndName() {
         return String.format("%s, %s", this.surname, this.name);
     }
+
+    public Category getCategory() {
+        return this.category;
+    }
+
 }
