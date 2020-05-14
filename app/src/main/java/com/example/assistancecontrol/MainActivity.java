@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -36,25 +37,27 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         spinner.setOnItemSelectedListener(this);
     }
 
-    public void sendMessage(View view) {
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.editText);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
-    }
-
-    public void onItemSelected(AdapterView<?> adapter, View view, int position, long id) {
-        String category = (String) adapter.getItemAtPosition(position);
+    public void onItemSelected(AdapterView<?> categoryAdapter, View view, int position, long id) {
+        String category = (String) categoryAdapter.getItemAtPosition(position);
         System.out.println("category" + category);
         ArrayList<Player> players = PlayerDao.getPlayerByCategory(category);
+        ListView listview = (ListView) findViewById(R.id.nameslistview);
+        ArrayList<String> names = new ArrayList<>();
         if (players == null) {
             System.out.println("Category different from u18");
+            names.add("Categoría diferente de sub18");
         } else {
             for (Player player : players) {
                 System.out.println(player.getSurnameAndName());
+                names.add(player.getSurnameAndName());
             }
         }
+        ArrayAdapter<String> namesAdapter = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_list_item_1,
+                names
+        );
+        listview.setAdapter(namesAdapter);
     }
 
     public void onNothingSelected(AdapterView<?> adapter) {
