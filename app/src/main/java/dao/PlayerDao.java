@@ -2,26 +2,41 @@ package dao;
 
 import java.util.ArrayList;
 
-import model.Category;
+
 import model.Player;
+
+import static model.Category.*;
 
 public class PlayerDao {
 
     private static ArrayList<Player> sub18List = new ArrayList<Player>() {
         {
-            add(new Player("Pepito", "Pérez", Category.U18));
-            add(new Player("Antonio", "Torres", Category.U18));
-            add(new Player("Manolito", "Márquez", Category.U18));
+            add(new Player("Pepito", "Pérez", U18));
+            add(new Player("Antonio", "Torres", U18));
+            add(new Player("Manolito", "Márquez", U18));
         }
     };
 
     private static ArrayList<Player> sub16List = new ArrayList<Player>() {
         {
-            add(new Player("Paquito", "Parquet", Category.U16));
-            add(new Player("Jorge", "Alessandro", Category.U16));
-            add(new Player("Marc", "Márquez", Category.U16));
+            add(new Player("Paquito", "Parquet", U16));
+            add(new Player("Jorge", "Alessandro", U16));
+            add(new Player("Marc", "Márquez", U16));
         }
     };
+
+    public static void addPlayerToCagetory(Player player) {
+        // TODO: this will end being a database query. For the time being, just returning made-up data
+        switch (player.getCategory()) {
+            case U18:
+                PlayerDao.sub18List.add(player);
+                break;
+            case U16:
+                PlayerDao.sub16List.add(player);
+            default:
+                System.out.println("do nothing");
+        }
+    }
 
     public static ArrayList<Player> getPlayerByCategory(String category) {
         // TODO: this will end being a database query. For the time being, just returning made-up data
