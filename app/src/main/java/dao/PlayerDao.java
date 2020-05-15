@@ -25,16 +25,22 @@ public class PlayerDao {
         }
     };
 
-    public static void addPlayerToCagetory(Player player) {
+    public static void addPlayerToCategory(Player player) {
         // TODO: this will end being a database query. For the time being, just returning made-up data
-        switch (player.getCategory()) {
-            case U18:
-                PlayerDao.sub18List.add(player);
-                break;
-            case U16:
-                PlayerDao.sub16List.add(player);
-            default:
-                System.out.println("do nothing");
+        try {
+            switch (player.getCategory()) {
+                case U18:
+                    PlayerDao.sub18List.add(player);
+                    break;
+                case U16:
+                    PlayerDao.sub16List.add(player);
+                    break;
+                default:
+                    System.err.println("category not supported yet");
+                    break;
+            }
+        } catch (NullPointerException e) {
+            System.err.println("Weird category has been inserted: " + e.getMessage());
         }
     }
 
