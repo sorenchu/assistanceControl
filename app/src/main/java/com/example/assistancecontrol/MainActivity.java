@@ -36,16 +36,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     public void onItemSelected(AdapterView<?> categoryAdapter, View view, int position, long id) {
         String category = (String) categoryAdapter.getItemAtPosition(position);
-        System.out.println("category" + category);
         ArrayList<Player> players = PlayerDao.getPlayerByCategory(category);
         ListView listview = (ListView) findViewById(R.id.nameslistview);
         ArrayList<String> names = new ArrayList<>();
         if (players == null) {
-            System.out.println("Category different from u18");
-            names.add("Categoría diferente de sub18");
+            names.add("Añade algún jugador a esta categoría");
         } else {
             for (Player player : players) {
-                System.out.println(player.getSurnameAndName());
                 names.add(player.getSurnameAndName());
             }
         }
