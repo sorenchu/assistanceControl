@@ -11,10 +11,12 @@
     <string-array name="category_array">
         <item>Sub18</item>
         <item>Sub16</item>
-        <item>Sub14</item>
-        <item>Sub12</item>
-        <item>Sub10</item>
-        <item>Sub8</item>
-        <item>Sub6</item>
+        <!--
+            <item>Sub14</item>
+            <item>Sub12</item>
+            <item>Sub10</item>
+            <item>Sub8</item>
+            <item>Sub6</item>
+        -->
     </string-array>
 </resources>
