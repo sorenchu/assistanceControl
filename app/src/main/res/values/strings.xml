@@ -2,6 +2,12 @@
     <string name="app_name">Control de Asistencia - CR3C</string>
     <string name="team_category">Introduce tu categoría</string>
     <string name="save">Guardar</string>
+    <string name="name">Nombre</string>
+    <string name="surname">Apellidos</string>
+    <string name="category">Categoría</string>
+    <string name="enter_name">Introduce el nombre</string>
+    <string name="enter_surname">Introduce los apellidos</string>
+    <string name="new_player">Nuevo jugador</string>
     <string-array name="category_array">
         <item>Sub18</item>
         <item>Sub16</item>

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     private void showSpinner() {
-        Spinner spinner = (Spinner) findViewById(R.id.category_spinner);
+        Spinner spinner = (Spinner) findViewById(R.id.show_category_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,
                 R.array.category_array,
@@ -62,5 +61,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     public void onNothingSelected(AdapterView<?> adapter) {
 
+    }
+
+    public void createNewPlayer(View view) {
+        Intent intent = new Intent(this, AddPlayerActivity.class);
+        startActivity(intent);
     }
 }
