@@ -48,9 +48,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         listview.setAdapter(namesAdapter);
     }
 
-    public void onNothingSelected(AdapterView<?> adapter) {
-
-    }
+    public void onNothingSelected(AdapterView<?> adapter) {}
 
     public void createNewPlayer(View view) {
         Intent intent = new Intent(this, AddPlayerActivity.class);
