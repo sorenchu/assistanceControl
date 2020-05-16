@@ -7,12 +7,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Spinner;
 
 import java.util.ArrayList;
 
 import dao.PlayerDao;
 import model.Player;
+import spinner.CategorySpinner;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -24,14 +24,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     private void showSpinner() {
-        Spinner spinner = (Spinner) findViewById(R.id.show_category_spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                this,
-                R.array.category_array,
-                android.R.layout.simple_spinner_dropdown_item
-        );
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
+        CategorySpinner categorySpinner = new CategorySpinner(this, R.id.show_category_spinner);
+        categorySpinner.getSpinner().setOnItemSelectedListener(this);
     }
 
     public void onItemSelected(AdapterView<?> categoryAdapter, View view, int position, long id) {

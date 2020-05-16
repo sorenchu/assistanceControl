@@ -4,18 +4,17 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
 
 import dao.PlayerDao;
 import model.Player;
+import spinner.CategorySpinner;
 
 import static model.Category.*;
 
 public class AddPlayerActivity extends AppCompatActivity {
 
-    private Spinner spinner;
+    private CategorySpinner categorySpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +32,7 @@ public class AddPlayerActivity extends AppCompatActivity {
     }
 
     private void showSpinner() {
-        this.spinner = (Spinner) findViewById(R.id.select_category_spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                this,
-                R.array.category_array,
-                android.R.layout.simple_spinner_dropdown_item
-        );
-        this.spinner.setAdapter(adapter);
+        this.categorySpinner = new CategorySpinner(this, R.id.select_category_spinner);
     }
 
     // TODO: should this be here?
@@ -48,7 +41,7 @@ public class AddPlayerActivity extends AppCompatActivity {
         String name = editText.getText().toString();
         editText = (EditText) findViewById(R.id.editText4);
         String surname = editText.getText().toString();
-        String category = this.spinner.getSelectedItem().toString();
+        String category = this.categorySpinner.getSpinner().getSelectedItem().toString();
         switch (category) {
             case "Sub18":
                 return new Player(name, surname, U18);
