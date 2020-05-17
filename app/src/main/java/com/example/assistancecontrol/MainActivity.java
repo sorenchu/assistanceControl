@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         ListView listview = (ListView) findViewById(R.id.nameslistview);
         ArrayList<String> names = new ArrayList<>();
         if (players == null) {
-            names.add("Añade algún jugador a esta categoría");
+            names.add(getString(R.string.no_players));
         } else {
             for (Player player : players) {
                 names.add(player.getSurnameAndName());

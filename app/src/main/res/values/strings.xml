@@ -8,6 +8,7 @@
     <string name="enter_name">Introduce el nombre</string>
     <string name="enter_surname">Introduce los apellidos</string>
     <string name="new_player">Nuevo jugador</string>
+    <string name="no_players">Añade algún jugador a esta categoría</string>
     <string-array name="category_array">
         <item>Sub18</item>
         <item>Sub16</item>
