@@ -42,6 +42,29 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         this.selectedDate.setOnClickListener(this);
         this.selectedDate.setText(this.getTodayDate());
     }
+    private String getTodayDate() {
+        final Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        return this.getDateWithFormat(year, month, day);
+    }
+
+    private String getDateWithFormat(int year, int month, int day) {
+        return day + "/" + (month+1) + "/" + year;
+    }
+
+    private void showDatePickerDialog() {
+        DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                final String date = getDateWithFormat(year, month, day);
+                selectedDate.setText(date);
+            }
+        });
+        newFragment.show(this.getSupportFragmentManager(), "datePicker");
+    }
+
     public void onItemSelected(AdapterView<?> categoryAdapter, View view, int position, long id) {
         String category = (String) categoryAdapter.getItemAtPosition(position);
         ArrayList<Player> players = PlayerDao.getPlayerByCategory(category);
