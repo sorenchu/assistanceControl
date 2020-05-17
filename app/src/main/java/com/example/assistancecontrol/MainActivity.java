@@ -30,6 +30,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         this.showSpinner();
         this.showDatePicker();
     }
+
+    public void createNewPlayer(View view) {
+        Intent intent = new Intent(this, AddPlayerActivity.class);
+        startActivity(intent);
     }
 
     private void showSpinner() {
