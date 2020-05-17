@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         this.selectedDate.setOnClickListener(this);
         this.selectedDate.setText(this.getTodayDate());
     }
+
+    @org.jetbrains.annotations.NotNull
     private String getTodayDate() {
         final Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
