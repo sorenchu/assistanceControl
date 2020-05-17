@@ -28,10 +28,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_main);
         this.showSpinner();
-        // TODO: this should go to a method
-        this.selectedDate = (EditText) findViewById(R.id.selectedDate);
-        selectedDate.setOnClickListener(this);
-        selectedDate.setText(this.getTodayDate());
+        this.showDatePicker();
+    }
     }
 
     private void showSpinner() {
@@ -39,6 +37,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         categorySpinner.getSpinner().setOnItemSelectedListener(this);
     }
 
+    private void showDatePicker() {
+        this.selectedDate = (EditText) findViewById(R.id.selectedDate);
+        this.selectedDate.setOnClickListener(this);
+        this.selectedDate.setText(this.getTodayDate());
+    }
     public void onItemSelected(AdapterView<?> categoryAdapter, View view, int position, long id) {
         String category = (String) categoryAdapter.getItemAtPosition(position);
         ArrayList<Player> players = PlayerDao.getPlayerByCategory(category);
