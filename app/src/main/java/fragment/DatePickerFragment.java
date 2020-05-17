@@ -36,9 +36,6 @@ public class DatePickerFragment extends DialogFragment {
         return new DatePickerDialog(getActivity(), this.listener, year, month, day);
     }
 
-    public void onDateSet(DatePicker view, int year, int month, int day) {
-        // Do something with the date chosen by the user
-        System.out.println("date is being changed");
-    }
+    public void onDateSet(DatePicker view, int year, int month, int day) {}
 
 }
