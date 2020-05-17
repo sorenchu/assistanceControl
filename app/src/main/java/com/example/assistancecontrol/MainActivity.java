@@ -89,7 +89,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onClick(View view) {
-        System.out.println("cambian coses " + view.getId());
         switch (view.getId()) {
             case R.id.selectedDate:
                 showDatePickerDialog();
