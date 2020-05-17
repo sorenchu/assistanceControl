@@ -95,28 +95,4 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 break;
         }
     }
-
-    private void showDatePickerDialog() {
-        DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                final String date = day + "/" + (month+1) + "/" + year;
-                selectedDate.setText(date);
-            }
-        });
-        newFragment.show(this.getSupportFragmentManager(), "datePicker");
-    }
-
-    public void createNewPlayer(View view) {
-        Intent intent = new Intent(this, AddPlayerActivity.class);
-        startActivity(intent);
-    }
-
-    private String getTodayDate() {
-        final Calendar c = Calendar.getInstance();
-        int year = c.get(Calendar.YEAR);
-        int month = c.get(Calendar.MONTH);
-        int day = c.get(Calendar.DAY_OF_MONTH);
-        return day + "/" + (month+1) + "/" + year;
-    }
 }
