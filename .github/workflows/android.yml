@@ -18,3 +18,6 @@ jobs:
       run: ./gradlew build
     - name: Run unit tests
       run: ./gradlew test --stacktrace
+    - name: Android Emulator Runner
+      uses: ReactiveCircus/android-emulator-runner@v2.8.0
+
