@@ -13,7 +13,7 @@ public class PlayerTest {
     public void getNameAndSurname() {
         Player player = new Player("John", "Doe", Category.U12);
         assertEquals(
-                "John Doe",
+                "patata patata",
                 player.getNameAndSurname()
         );
     }
