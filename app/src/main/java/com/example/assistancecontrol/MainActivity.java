@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
         return new ArrayAdapter<String>(
                 this,
-                android.R.layout.simple_list_item_1,
+                android.R.layout.simple_list_item_multiple_choice,
                 names
         );
     }
@@ -96,6 +96,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onItemSelected(AdapterView<?> categoryAdapter, View view, int position, long id) {
         ArrayAdapter<String> namesAdapter = this.getArrayAdapter(categoryAdapter, position);
         ListView listview = (ListView) findViewById(R.id.nameslistview);
+        listview.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        listview.setItemsCanFocus(false);
         listview.setAdapter(namesAdapter);
     }
 
