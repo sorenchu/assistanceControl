@@ -36,6 +36,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         startActivity(intent);
     }
 
+    public void saveTheDay(View view) {
+        // do nothing
+    }
+
     private void showSpinner() {
         CategorySpinner categorySpinner = new CategorySpinner(this, R.id.show_category_spinner);
         categorySpinner.getSpinner().setOnItemSelectedListener(this);
