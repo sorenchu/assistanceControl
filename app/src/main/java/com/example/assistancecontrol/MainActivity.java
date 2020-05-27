@@ -71,10 +71,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         newFragment.show(this.getSupportFragmentManager(), "datePicker");
     }
 
-    public void onItemSelected(AdapterView<?> categoryAdapter, View view, int position, long id) {
+    private ArrayAdapter<String> getArrayAdapter(AdapterView<?> categoryAdapter, int position) {
         String category = (String) categoryAdapter.getItemAtPosition(position);
         ArrayList<Player> players = PlayerDao.getPlayerByCategory(category);
-        ListView listview = (ListView) findViewById(R.id.nameslistview);
         ArrayList<String> names = new ArrayList<>();
         if (players == null) {
             names.add(getString(R.string.no_players));
@@ -83,11 +82,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 names.add(player.getSurnameAndName());
             }
         }
-        ArrayAdapter<String> namesAdapter = new ArrayAdapter<String>(
+        return new ArrayAdapter<String>(
                 this,
                 android.R.layout.simple_list_item_1,
                 names
         );
+    }
+
+    public void onItemSelected(AdapterView<?> categoryAdapter, View view, int position, long id) {
+        ArrayAdapter<String> namesAdapter = this.getArrayAdapter(categoryAdapter, position);
+        ListView listview = (ListView) findViewById(R.id.nameslistview);
         listview.setAdapter(namesAdapter);
     }
 
