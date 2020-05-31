@@ -78,15 +78,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private ArrayAdapter<String> getArrayAdapter(AdapterView<?> categoryAdapter, int position) {
         String category = (String) categoryAdapter.getItemAtPosition(position);
         ArrayList<Player> players = PlayerDao.getPlayerByCategory(category);
-        ArrayList<String> names = new ArrayList<>();
         if (players == null) {
-            names.add(getString(R.string.no_players));
-        } else {
-            for (Player player : players) {
-                names.add(player.getSurnameAndName());
-            }
+            return new ArrayAdapter<>(
+                    this,
+                    android.R.layout.simple_expandable_list_item_1,
+                    new ArrayList<String>() {{
+                        add(getString(R.string.no_players));
+                    }}
+            );
         }
-        return new ArrayAdapter<String>(
+        ArrayList<String> names = new ArrayList<>();
+        for (Player player : players) {
+            names.add(player.getSurnameAndName());
+        }
+        return new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_multiple_choice,
                 names
@@ -97,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         ArrayAdapter<String> namesAdapter = this.getArrayAdapter(categoryAdapter, position);
         ListView listview = (ListView) findViewById(R.id.nameslistview);
         listview.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        listview.setItemsCanFocus(false);
+        listview.setItemsCanFocus(true);
         listview.setAdapter(namesAdapter);
     }
 
