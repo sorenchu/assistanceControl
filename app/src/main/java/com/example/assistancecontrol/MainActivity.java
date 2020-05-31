@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
         // TODO: save assistants list
         System.out.println(assistants);
+        System.out.println(this.selectedDate.getText());
     }
 
     private void showSpinner() {
