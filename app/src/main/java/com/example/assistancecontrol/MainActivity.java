@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -37,7 +38,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void saveTheDay(View view) {
-        // do nothing
+        ListView listview = (ListView) findViewById(R.id.nameslistview);
+        SparseBooleanArray checked = listview.getCheckedItemPositions();
+        ArrayList<String> assistants = new ArrayList<>();
+        for (int i = 0; i < checked.size(); i++) {
+            if (checked.valueAt(i)) {
+                assistants.add(
+                        (String) listview.getItemAtPosition(
+                            checked.keyAt(i)
+                    )
+                );
+            }
+        }
+        // TODO: save assistants list
+        System.out.println(assistants);
     }
 
     private void showSpinner() {
