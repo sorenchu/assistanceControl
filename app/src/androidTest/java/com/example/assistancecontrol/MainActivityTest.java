@@ -44,7 +44,7 @@ public class MainActivityTest {
     @Test
     public void changeSpinnerToU16Category() {
         // Check that u18 choice is selected
-        for (int i=0; i < u18List.size(); i++) {
+        for (int i = 0; i < u18List.size(); i++) {
             onData(anything())
                     .inAdapterView(withId(R.id.nameslistview))
                     .atPosition(i)
@@ -53,13 +53,34 @@ public class MainActivityTest {
         // Click on u16 choice
         onView(withId(R.id.show_category_spinner))
                 .perform(click());
+        // TODO: fix that hardcoded 1
         onData(anything()).atPosition(1).perform(click());
         // Check that u16 data is there
-        for (int i=0; i < u16List.size(); i++) {
+        for (int i = 0; i < u16List.size(); i++) {
             onData(anything())
                     .inAdapterView(withId(R.id.nameslistview))
                     .atPosition(i)
                     .check(matches(withText(u16List.get(i))));
         }
+    }
+
+    @Test
+    public void clickSendOnU18Category() {
+        // Check that u18 choice is selected
+        for (int i=0; i < u18List.size(); i++) {
+            onData(anything())
+                    .inAdapterView(withId(R.id.nameslistview))
+                    .atPosition(i)
+                    .check(matches(withText(u18List.get(i))));
+        }
+        // Select checkbox for first element in list
+        onData(anything())
+                .inAdapterView(withId(R.id.nameslistview))
+                .atPosition(0)
+                .perform(click());
+        // Click on save button
+        onView(withId(R.id.saveTheDayActionButton))
+                .perform(click());
+
     }
 }
