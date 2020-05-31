@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void saveTheDay(View view) {
-        ListView listview = (ListView) findViewById(R.id.nameslistview);
+        ListView listview = this.getListView();
         SparseBooleanArray checked = listview.getCheckedItemPositions();
         ArrayList<String> assistants = new ArrayList<>();
         for (int i = 0; i < checked.size(); i++) {
@@ -112,9 +112,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         );
     }
 
+    private ListView getListView() {
+        return (ListView) findViewById(R.id.nameslistview);
+    }
+
     public void onItemSelected(AdapterView<?> categoryAdapter, View view, int position, long id) {
         ArrayAdapter<String> namesAdapter = this.getArrayAdapter(categoryAdapter, position);
-        ListView listview = (ListView) findViewById(R.id.nameslistview);
+        ListView listview = this.getListView();
         listview.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         listview.setItemsCanFocus(true);
         listview.setAdapter(namesAdapter);
